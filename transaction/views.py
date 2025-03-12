@@ -9,7 +9,8 @@ def my_account(request, username):
 
 def get_loan(request,darkhast):
     global BOODJE
-    if BOODJE < darkhast:
-        return HttpResponse("successful")
+    if BOODJE > darkhast:
+        BOODJE -= darkhast
+        return HttpResponse(f"successful remaining boodje: {BOODJE}")
     else:
         return HttpResponse("ERROR")
